@@ -5,8 +5,67 @@
 </head>
 <body>
 
+<script>
+  function onFBConnect(response) {
+    FB.api(
+      `/${response.userID}/friendlists`,
+      function (response) {
+        console.log(response);
+        if (response && !response.error) {
+        }
+      }
+    );
+  }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '440209749685092',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();   
+
+    FB.getLoginStatus(function(response) {
+      onFBConnect(response.authResponse);
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<a id="fb_login_button" href="#" 
+      onclick="FB.login(function(){ console.log(arguments); },
+      {scope: 'friend_list'});
+       return false;">
+    Facebook
+</a>
+
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+<fb:login-button
+    scope="email">
+    Connect Facebooks
+</fb:login-button>
+
+<!--
+
 <div id="react-root"></div>
 <script src="./generated/webpack-bundle.js"></script>
+-->
+
+
+
+
 
 </body>
 </html>

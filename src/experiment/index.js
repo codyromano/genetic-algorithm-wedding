@@ -1,45 +1,25 @@
-// Genetic.js library by SubProtocol
-const genetic = require('genetic-js');
+import genetic from 'genetic-js';
+// TODO: Use webpack alias instead of relative path
+import configure from './configure';
 
-// Implementation of Genetic.js
-const seedFn = require('./seed');
-const mutateFn = require('./mutate');
-const fitnessFn = require('./fitness');
+export const create = (onUpdate) => {
+  const experiment = genetic.create();
+  configure(experiment);
 
-const experiment = genetic.create();
-
-// Treat the greater of two fitness scores as optimal
-experiment.optimize = genetic.Optimize.Maximize;
-
-// Select the fittest of two random individuals
-experiment.select1 = genetic.Select1.Tournament2;
-experiment.select2 = genetic.Select2.FittestRandom;
-
-experiment.seed = seedFn;
-experiment.mutate = mutateFn;
-experiment.fitness = fitnessFn;
-
-/*
-experiment.crossover = (arrangementA, arrangementB) => {
-};
-*/
-
-experiment.notification = (...args) => {
-  //console.log(...args);
+  experiment.notification = onUpdate;
+  return experiment;
 };
 
-const config = {
-  iterations: 250,
-  size: 250
-};
+export const start = (experiment) => {
+  const config = {
+    iterations: 250,
+    size: 250
+  };
 
-const userData = {
-  friends: [],
-  friendsPerTable: 10
-};
+  const userData = {
+    friends: [],
+    friendsPerTable: 10
+  };
 
-module.exports = {
-  init() {
-    experiment.evolve(config, userData);
-  }
+  return experiment.evolve(config, userData);
 };

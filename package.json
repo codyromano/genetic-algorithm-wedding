@@ -4,7 +4,7 @@
   "description": "Decide who should be invited to your wedding using a genetic algorithm to optimize guest happiness",
   "main": "index.js",
   "scripts": {
-    "start": "webpack webpack-entry.js && node index.js",
+    "start": "webpack -p webpack-entry.js && node index.js",
     "test": "node ./test/"
   },
   "repository": {
@@ -28,7 +28,6 @@
   "dependencies": {
     "express": "^4.15.3",
     "genetic-js": "^0.1.14",
-    "node-random-name": "^1.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },

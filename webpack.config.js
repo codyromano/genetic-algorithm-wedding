@@ -7,7 +7,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      components: './src/components'
+      components: './src/components',
+      experiment: './src/experiment',
+      public: './src/public'
     }
   },
   devtool: 'source-map',

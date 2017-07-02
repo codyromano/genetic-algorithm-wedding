@@ -1,2 +1,1 @@
-const experiment = require('./experiment');
-experiment.init();
+const server = require('./server.js'); // eslint-disable-line

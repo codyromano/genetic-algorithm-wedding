@@ -25,7 +25,7 @@ experiment.crossover = (arrangementA, arrangementB) => {
 */
 
 experiment.notification = (...args) => {
-  console.log(...args);
+  //console.log(...args);
 };
 
 const config = {

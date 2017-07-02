@@ -4,7 +4,8 @@
   "description": "Decide who should be invited to your wedding using a genetic algorithm to optimize guest happiness",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node ./test/"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/codyromano/genetic-algorithm-wedding/issues"
   },
-  "homepage": "https://github.com/codyromano/genetic-algorithm-wedding#readme"
+  "homepage": "https://github.com/codyromano/genetic-algorithm-wedding#readme",
+  "dependencies": {
+    "genetic-js": "^0.1.14",
+    "node-random-name": "^1.0.1"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1"
+  }
 }

@@ -4,6 +4,7 @@ module.exports = {
   entry: './bootstrap.js',
   output: {
     path: path.resolve(__dirname, 'src/public/generated'),
+    publicPath: "/src/public/",
     filename: 'bundle.js'
   },
   resolve: {

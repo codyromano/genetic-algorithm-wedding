@@ -1,4 +1,4 @@
-const assert = require('assert');
-const seed = require('../experiment/seed');
+import getMockIndividualTest from 'test/getMockIndividualTest';
+import assert from 'assert';
 
-assert(Array.isArray(seed()), 'Seed returns array');
+assert(false);

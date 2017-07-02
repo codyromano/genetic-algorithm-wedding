@@ -1,16 +1,20 @@
 const path = require('path');
 
 module.exports = {
-  entry: './webpack-entry',
+  entry: './bootstrap.js',
   output: {
-    filename: './public/generated/webpack-bundle.js'
+    path: path.resolve(__dirname, 'src/public/generated'),
+    filename: 'bundle.js'
   },
   resolve: {
     alias: {
-      components: './src/components',
-      experiment: './src/experiment',
-      public: './src/public'
-    }
+      test: path.resolve(__dirname, 'test'),
+      utils: path.resolve(__dirname, 'src/utils'),
+      components: path.resolve(__dirname, 'src/components'),
+      experiment: path.resolve(__dirname, 'src/experiment'),
+      public: path.resolve(__dirname, 'src/public')
+    },
+    extensions: ['.js', '.jsx']
   },
   devtool: 'source-map',
   module: {

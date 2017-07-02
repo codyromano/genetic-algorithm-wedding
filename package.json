@@ -1,0 +1,27 @@
+{
+  "name": "genetic-algorithm-wedding",
+  "version": "1.0.0",
+  "description": "Decide who should be invited to your wedding using a genetic algorithm to optimize guest happiness",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codyromano/genetic-algorithm-wedding.git"
+  },
+  "keywords": [
+    "genetic",
+    "algorithm",
+    "happiness",
+    "wedding",
+    "events",
+    "logistics"
+  ],
+  "author": "Cody Romano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codyromano/genetic-algorithm-wedding/issues"
+  },
+  "homepage": "https://github.com/codyromano/genetic-algorithm-wedding#readme"
+}

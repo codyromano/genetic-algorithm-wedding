@@ -1,3 +1,8 @@
-// TODO: Import experiment
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from 'components/App';
 
-console.log(genetic);
+ReactDOM.render(
+  <App/>,
+  document.getElementById('react-root')
+);

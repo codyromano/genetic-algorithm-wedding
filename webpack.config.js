@@ -5,6 +5,11 @@ module.exports = {
   output: {
     filename: './public/generated/webpack-bundle.js'
   },
+  resolve: {
+    alias: {
+      components: './src/components'
+    }
+  },
   devtool: 'source-map',
   module: {
     loaders: [

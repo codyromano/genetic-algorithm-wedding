@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'; //eslint-disable-line
 import createExperiment from 'experiment/GeneticExperimentFactory';
 
 const experiment = createExperiment({
@@ -6,7 +6,7 @@ const experiment = createExperiment({
     console.log(...args);
   }
 });
-experiment.initPopulation();
+experiment.start();
 
 console.log(experiment);
 
@@ -30,7 +30,7 @@ export default class App extends Component {
     this.experimentUpdated = this.experimentUpdated.bind(this); 
     */
   }
-  experimentUpdated(...args) {
+  experimentUpdated() {
     //console.log(...args);
   }
   componentDidMount() {

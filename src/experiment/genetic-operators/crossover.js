@@ -9,6 +9,11 @@ const getHead = (index, array) => array.slice(index);
 * This implementation uses the "one-point crossover" strategy.
 */
 export default function(mother, father) {
+  // Get just the genotype data; we don't care about
+  // metadata such as fitness score
+  mother = mother.entity;
+  father = father.entity;
+
   if (mother.length !== father.length || mother.length < 1) {
     throw new Error(`Genotypes must consist of at least
       2 genes and parents must be of equal length.`);
@@ -30,4 +35,4 @@ export default function(mother, father) {
   const daughter = motherTail.concat(fatherHead);
 
   return [son, daughter];
-};
+}

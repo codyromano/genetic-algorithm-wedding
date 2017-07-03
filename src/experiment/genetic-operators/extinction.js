@@ -9,10 +9,10 @@ export default function(genotypes) {
   const weakIDs = genotypes
     .sort(sortByWeakness)
     .slice(0, 2)
-    .map(item => item.id);
+    .map(item => item.entity.id);
 
   genotypes.forEach((genotype, i, array) => {
-    if (weakIDs.includes(genotype.id)) {
+    if (weakIDs.includes(genotype.entity.id)) {
       array.splice(i, 1);
     } 
   });

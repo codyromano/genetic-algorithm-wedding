@@ -6,6 +6,7 @@ import fitness from 'genetic-operators/fitness';
 import crossover from 'genetic-operators/crossover';
 import mutate from 'genetic-operators/mutate';
 import selection from 'genetic-operators/selection';
+import extinction from 'genetic-operators/extinction';
 
 const getDefaultOptions = () => {
   return {
@@ -14,6 +15,7 @@ const getDefaultOptions = () => {
     crossover,
     mutate,
     selection,
+    extinction,
     maxGenerations: config.maxGenerations,
     maxGenotypes: config.guestListSize
   };
@@ -26,4 +28,4 @@ export default function(options = {}) {
     options
   );
   return new GeneticExperiment(constructArgs);
-};
+}

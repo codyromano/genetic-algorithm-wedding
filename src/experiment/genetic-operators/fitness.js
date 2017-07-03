@@ -1,4 +1,3 @@
-import config from 'experiment/config';
 import DinnerTable from 'experiment/helpers/DinnerTable';
 
 /**
@@ -25,4 +24,4 @@ export default function(genotype) {
   });
 
   return totalFitness;
-};
+}

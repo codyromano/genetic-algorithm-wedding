@@ -5,6 +5,7 @@ import seed from 'genetic-operators/seed';
 import fitness from 'genetic-operators/fitness';
 import crossover from 'genetic-operators/crossover';
 import mutate from 'genetic-operators/mutate';
+import selection from 'genetic-operators/selection';
 
 const getDefaultOptions = () => {
   return {
@@ -12,6 +13,7 @@ const getDefaultOptions = () => {
     fitness,
     crossover,
     mutate,
+    selection,
     maxGenerations: config.maxGenerations,
     maxGenotypes: config.guestListSize
   };

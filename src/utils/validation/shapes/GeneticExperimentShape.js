@@ -5,5 +5,6 @@ export default {
   mutate: 'function',
   seed: 'function',
   fitness: 'function',
+  selection: 'function',
   onUpdate: 'function'
 };

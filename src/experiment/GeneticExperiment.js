@@ -6,23 +6,27 @@ export default class GeneticExperiment {
     // Assign user-provided genetic operators (seed, fitness, etc.)
     Object.assign(this, config);
 
-    // Validate the operators
+    // Validate config options
     validate().shapeOf(this, GeneticShape);
-
-    this.genotypes = [];
   }
 
   initPopulation() {
-    if (this.genotypes.length) {
-      console.warn('Population already intialized');
-    }
+    this.genotypes = [];
+
     for (let i=0; i<this.maxGenotypes; i++) {
       const entity = this.seed();
+      const fitness = this.fitness(entity);
 
-      this.genotypes.push({
-        entity,
-        fitness: this.fitness(entity)
-      });
+      this.genotypes.push({entity, fitness});
     }
+  }
+
+  evolve() {
+    const [ mother, father ] = this.selection(this.genotypes);
+    const [ daughter, son ] = this.crossover(mother, father);
+  }
+
+  start() {
+    this.initPopulation();
   }
 }

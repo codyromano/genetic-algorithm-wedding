@@ -1,4 +1,9 @@
 import React, {Component} from 'react';
+import createExperiment from 'experiment/GeneticExperimentFactory';
+
+const experiment = createExperiment();
+console.log(experiment);
+
 // TODO: Use webpack alias instead of relative path
 /*
 import {

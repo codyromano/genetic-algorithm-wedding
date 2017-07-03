@@ -11,6 +11,7 @@ module.exports = {
     alias: {
       test: path.resolve(__dirname, 'test'),
       utils: path.resolve(__dirname, 'src/utils'),
+      validation: path.resolve(__dirname, 'src/utils/validation'),
       components: path.resolve(__dirname, 'src/components'),
       experiment: path.resolve(__dirname, 'src/experiment'),
       public: path.resolve(__dirname, 'src/public')

@@ -1,4 +1,6 @@
-const config = Object.freeze({
+import { deepFreeze } from 'utils';
+
+const config = {
   populationSize: 500,
   guestListSize: 80,
   guestsPerTable: 10,
@@ -7,6 +9,6 @@ const config = Object.freeze({
     sports: 0.25,
     humor: 0.25
   }
-});
+};
 
-export default config;
+export default deepFreeze(config);

@@ -5,17 +5,15 @@ import App from 'components/App';
 import seed from 'experiment/seed';
 import getFitness from 'experiment/fitness';
 import crossover from 'experiment/crossover';
+import mutate from 'experiment/mutate';
 
 const mother = seed();
-const father = seed();
 
-console.log('mother: ', mother);
-console.log('father: ', father);
+const printGenotype = genotype => genotype.map(
+  gen => gen.name.slice(-5)).join(' ');
 
-const [son, daughter] = crossover(mother, father);
-
-console.log('son: ', son);
-console.log('daughter: ', daughter);
+console.log( printGenotype(mother));
+console.log( printGenotype( mutate(mother) ) );
 
 
 ReactDOM.render(

@@ -1,7 +1,9 @@
 import { deepFreeze } from 'utils';
 
 const config = {
+  // Our total number of Facebook friends
   populationSize: 500,
+  // Number of people who can fit in the wedding
   guestListSize: 80,
   guestsPerTable: 10,
 

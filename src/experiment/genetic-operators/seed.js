@@ -1,5 +1,5 @@
 import config from 'experiment/config';
-import getMockPopulation from 'experiment/impl/getMockPopulation';
+import getMockPopulation from 'experiment/helpers/getMockPopulation';
 import { randFromArray } from 'utils';
 
 export default function() {

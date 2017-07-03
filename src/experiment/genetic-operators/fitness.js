@@ -1,5 +1,5 @@
 import config from 'experiment/config';
-import DinnerTable from 'experiment/impl/DinnerTable';
+import DinnerTable from 'experiment/helpers/DinnerTable';
 
 /**
 * @returns {Number} How well the entire wedding party gets along

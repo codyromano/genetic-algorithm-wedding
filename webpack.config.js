@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './bootstrap.js',
+  entry: './src/bootstrap.js',
   output: {
     path: path.resolve(__dirname, 'src/public/generated'),
     publicPath: "/src/public/",

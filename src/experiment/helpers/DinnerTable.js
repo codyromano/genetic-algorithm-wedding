@@ -1,8 +1,6 @@
 import { variance } from 'utils';
 import config from 'experiment/config';
 
-console.log('variance: ', variance([2,4,10,30,20]) );
-
 const { guestsPerTable, fitnessFeatures } = config;
 
 export default class DinnerTable {

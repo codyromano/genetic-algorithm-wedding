@@ -1,10 +1,10 @@
 import getMockIndividual from 'experiment/getMockIndividual';
+import config from 'experiment/config';
 
 export default function() {
   const population = [];
 
-  // Assume we have 600 Facebook friends
-  for (let i=0; i<600; i++) {
+  for (let i=0; i<config.populationSize; i++) {
     population.push( getMockIndividual() );
   }
 

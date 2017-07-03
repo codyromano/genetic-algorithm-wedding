@@ -1,9 +1,4 @@
-import {rand} from 'utils';
-
-const getID = () => {
-  let id = 1;
-  return () => id++;
-};
+import { rand, getID } from 'utils';
 
 export default function() {
   const id = getID();

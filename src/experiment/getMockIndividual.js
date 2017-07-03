@@ -1,3 +1,4 @@
+import getRandomFitnessFeatures from 'experiment/getRandomFitnessFeatures';
 import { rand, getID } from 'utils';
 
 export default function() {
@@ -7,10 +8,6 @@ export default function() {
     id,
     name: `Guest ${id}`,
     image: 'placeholder.png',
-    features: {
-      politics: rand(0, 1),
-      sports: rand(0, 1),
-      humor: rand(0, 1)
-    }
+    features: getRandomFitnessFeatures()
   };
 };

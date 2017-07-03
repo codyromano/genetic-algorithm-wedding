@@ -1,41 +1,28 @@
-module.exports = function(seatArrangement) {
-  // TODO: Move nested functions outside closure. This
-  // is to resolve a transient bug
+import config from 'experiment/config';
+import DinnerTable from 'experiment/impl/DinnerTable';
 
-  const { friendsPerTable } = this.userData;
+/**
+* @returns {Number} How well the entire wedding party gets along
+*/
+export default function(genotype) {
   let totalFitness = 0;
+  let table = new DinnerTable();
 
-  // How well do you get along with the
-  // person sitting beside you?
-  const getPairFitness = (personA, personB) => {
-    let fitness = 0;
+  genotype.forEach((person, index) => {
 
-    if (personA && personB) {
-      for (const personA_attr in personA.attrs) {
-        // Difference in attributes between two people
-        fitness+= personB.attrs[personA_attr] - personA.attrs[personA_attr];
-      }
+    if (table.isFull()) {
+      // Record the result and move to next table
+      totalFitness+= table.getFitness();
+      table = new DinnerTable();
     }
-    return fitness;
-  };
 
-  // How well does the entire table get along?
-  const getTableFitness = people => {
-    let fitness = 0;
+    table.addPerson(person);
 
-    for (let i=0; i<people.length; i+= 2) {
-      fitness+= getPairFitness(people[i], people[i + 1]);
+    const isLastTable = genotype[index + 1] === undefined;
+    if (!table.isFull() && isLastTable) {
+      totalFitness+= table.getFitness();
     }
-    return fitness;
-  };
-
-  for (let i=0; i<seatArrangement.length; i+= friendsPerTable) {
-    const friendsAtTable = seatArrangement.slice(i, friendsPerTable);
-    totalFitness+= getTableFitness(friendsAtTable);
-  }
+  });
 
   return totalFitness;
-
-  // TODO: Ensure low fitness is good
-  // or change criteria
 };

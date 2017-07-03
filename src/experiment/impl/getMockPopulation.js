@@ -1,4 +1,4 @@
-import getMockIndividual from 'experiment/getMockIndividual';
+import getMockIndividual from 'experiment/impl/getMockIndividual';
 import config from 'experiment/config';
 
 export default function() {

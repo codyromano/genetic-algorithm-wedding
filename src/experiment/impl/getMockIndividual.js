@@ -1,4 +1,4 @@
-import getRandomFitnessFeatures from 'experiment/getRandomFitnessFeatures';
+import getRandomFitnessFeatures from 'experiment/impl/getRandomFitnessFeatures';
 import { rand, getID } from 'utils';
 
 export default function() {

@@ -1,9 +1,9 @@
 import GeneticExperiment from 'experiment/GeneticExperiment';
 
-import seed from 'experiment/genetic-operators/seed';
-import fitness from 'experiment/genetic-operators/fitness';
-import crossover from 'experiment/genetic-operators/crossover';
-import mutate from 'experiment/genetic-operators/mutate';
+import seed from 'genetic-operators/seed';
+import fitness from 'genetic-operators/fitness';
+import crossover from 'genetic-operators/crossover';
+import mutate from 'genetic-operators/mutate';
 
 export default function(options = {}) {
   // Core genetic operations needed by the GA

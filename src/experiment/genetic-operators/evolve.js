@@ -22,5 +22,8 @@ export default function() {
   this.currentBest = this.getMostFit(mother, father, daughter, son);
   this.currentGeneration+= 1;
 
-  this.onUpdate(this.currentBest);
+  this.onUpdate(
+    this.currentGeneration,
+    this.currentBest
+  );
 }

@@ -7,7 +7,7 @@ export default function(genotype) {
   let totalFitness = 0;
   let table = new DinnerTable();
 
-  genotype.forEach((person, index) => {
+  genotype.entity.forEach((person, index) => {
 
     if (table.isFull()) {
       // Record the result and move to next table

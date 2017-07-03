@@ -4,7 +4,7 @@ const config = {
   // Our total number of Facebook friends
   populationSize: 500,
   // Max iterations for the algorithm
-  maxGenerations: 500,
+  maxGenerations: 1000,
   // Number of people who can fit in the wedding
   guestListSize: 80,
   guestsPerTable: 10,

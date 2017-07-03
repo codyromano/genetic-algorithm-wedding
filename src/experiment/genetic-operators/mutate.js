@@ -9,9 +9,9 @@ import config from 'experiment/config';
 * table at which a guest is sitting.
 */
 export default function(genotype) {
-  const { length } = genotype;
+  const { length } = genotype.entity;
 
-  // Swap x% of the genes or 1 gene — whichever is greater
+  // Swap x% of the genes or 1 gene - whichever is greater
   const x = config.mutationPercent;
   const totalSwaps = Math.max(1, Math.floor(length * x));
   let swapsMade = 0;
@@ -20,8 +20,8 @@ export default function(genotype) {
     const indexA = rand(0, length);
     const indexB = rand(0, length);
 
-    arraySwap(genotype, indexA, indexB);
+    arraySwap(genotype.entity, indexA, indexB);
   }
 
   return genotype;
-};
+}

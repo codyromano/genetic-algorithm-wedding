@@ -1,5 +1,5 @@
-import sortByFitness from 'experiment/helpers/sortByFitness';
+import survival from 'genetic-operators/survival';
 
 export default function(genotypes) {
-  return genotypes.sort(sortByFitness).slice(0, 2);
-};
+  return genotypes.sort(survival).slice(0, 2);
+}

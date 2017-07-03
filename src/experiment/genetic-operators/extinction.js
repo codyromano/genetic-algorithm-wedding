@@ -1,4 +1,8 @@
-import sortByWeakness from 'experiment/helpers/sortByWeakness';
+import survival from 'genetic-operators/survival';
+
+// Weakness is the opposite of fitness, so we only need to
+// negate the survival function
+const sortByWeakness = (...args) => !survival(...args);
 
 /**
 * @returns {Array} Two weakest genotypes

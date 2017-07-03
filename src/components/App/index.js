@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import createExperiment from 'experiment/GeneticExperimentFactory';
 
-const experiment = createExperiment();
-console.log(experiment);
+const experiment = createExperiment({
+  onUpdate: function(...args) {
+    console.log(...args);
+  }
+});
+experiment.initPopulation();
 
 // TODO: Use webpack alias instead of relative path
 /*

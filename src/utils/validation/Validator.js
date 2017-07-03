@@ -13,7 +13,7 @@ export default class Validator {
     }
     for (const [key, expectedType] of Object.entries(shape)) {
       if (typeof object[key] !== expectedType) {
-        this.onError(`Property ${key} must be type of ${object}`);
+        this.onError(`Property ${key} must be type of ${expectedType}`);
       }
     }
   }

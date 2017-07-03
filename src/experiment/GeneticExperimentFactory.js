@@ -1,16 +1,27 @@
 import GeneticExperiment from 'experiment/GeneticExperiment';
+import config from 'experiment/config';
 
 import seed from 'genetic-operators/seed';
 import fitness from 'genetic-operators/fitness';
 import crossover from 'genetic-operators/crossover';
 import mutate from 'genetic-operators/mutate';
 
+const getDefaultOptions = () => {
+  return {
+    seed,
+    fitness,
+    crossover,
+    mutate,
+    maxGenerations: config.maxGenerations,
+    maxGenotypes: config.guestListSize
+  };
+};
+
 export default function(options = {}) {
-  // Core genetic operations needed by the GA
-  const operators = { seed, fitness, crossover, mutate };
-
   // Allow the caller to override default operators
-  const constructArgs = Object.assign(operators, options);
-
+  const constructArgs = Object.assign(
+    getDefaultOptions(),
+    options
+  );
   return new GeneticExperiment(constructArgs);
 };

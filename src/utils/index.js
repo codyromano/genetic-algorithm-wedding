@@ -1,11 +1,11 @@
 import randFn from 'utils/rand';
-import cloneObjectArrayFn from 'utils/cloneObjectArray';
-import randFromArrayFn from 'utils/randFromArray';
+import cloneObjectArrayFn from 'utils/array/cloneObjectArray';
+import randFromArrayFn from 'utils/array/randFromArray';
 import getIDFn from 'utils/getID';
 import deepFreezeFn from 'utils/deepFreeze';
-import meanFn from 'utils/mean';
-import varianceFn from 'utils/variance';
-import arraySwapFn from 'utils/arraySwap';
+import meanFn from 'utils/math/mean';
+import varianceFn from 'utils/math/variance';
+import arraySwapFn from 'utils/array/arraySwap';
 
 export const rand = randFn;
 export const cloneObjectArray = cloneObjectArrayFn;

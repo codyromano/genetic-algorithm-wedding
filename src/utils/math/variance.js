@@ -1,4 +1,4 @@
-import getMean from 'utils/mean';
+import getMean from 'utils/math/mean';
 
 export default function(array) {
   const mean = getMean(array);

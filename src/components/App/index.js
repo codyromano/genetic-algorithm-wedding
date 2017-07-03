@@ -8,6 +8,8 @@ const experiment = createExperiment({
 });
 experiment.initPopulation();
 
+console.log(experiment);
+
 // TODO: Use webpack alias instead of relative path
 /*
 import {

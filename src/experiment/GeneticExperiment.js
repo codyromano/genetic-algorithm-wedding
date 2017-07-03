@@ -14,12 +14,15 @@ export default class GeneticExperiment {
 
   initPopulation() {
     if (this.genotypes.length) {
-      console.warn('Initalizing a previously initialized population');
+      console.warn('Population already intialized');
     }
     for (let i=0; i<this.maxGenotypes; i++) {
-      this.genotypes.push(
-        this.seed()
-      );
+      const entity = this.seed();
+
+      this.genotypes.push({
+        entity,
+        fitness: this.fitness(entity)
+      });
     }
   }
 }

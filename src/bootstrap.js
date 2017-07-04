@@ -1,9 +1,11 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line
 import ReactDOM from 'react-dom';
-import App from 'components/App';
+import { HashRouter } from 'react-router-dom';
+import BasePage from 'pages/BasePage';
 import 'test';
 
-ReactDOM.render(
-  <App/>,
-  document.getElementById('react-root')
-);
+ReactDOM.render((
+  <HashRouter>
+    <BasePage/>
+  </HashRouter>
+), document.getElementById('react-root'));

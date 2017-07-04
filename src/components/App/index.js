@@ -1,7 +1,8 @@
 import React, {Component} from 'react'; //eslint-disable-line
 import { onExperimentReady, createExperiment } from 'experiment/GeneticExperimentFactory';
-import Friend from 'components/Friend'; //eslint-disable-line
+import Friend from 'components/Friend';
 import DinnerTable from 'components/immutable/DinnerTable';
+import { Route, Switch } from 'react-router-dom';
 
 // TODO: Move to utils
 const selfBindMethods = (context, ...methodNames) => {
@@ -49,11 +50,19 @@ export default class App extends Component {
     ));
 
     return (
+      <Switch>
+        <Route path="/" component={LandingPage}/>
+      </Switch>
+    );
+
+    /*
+    return (
       <main>
         {friends}
         <DinnerTable friends={[]}/>
       </main>
     );
+    */
   }
 }
 

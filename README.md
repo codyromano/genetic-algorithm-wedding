@@ -1,6 +1,6 @@
 # Genetic Wedding
 Optimize your wedding seating arrangement — and decide whom to invite — using a genetic algorithm.
-![](http://i.ebayimg.com/images/g/tDcAAOSwPcVVpNYb/s-l300.jpg)
+![](https://media.giphy.com/media/l0IynVv35qWZH5jOM/giphy.gif)
 
 # Try it
 ```

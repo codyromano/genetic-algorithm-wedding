@@ -48,7 +48,9 @@ export default function(next) {
 
   this.onUpdate(
     this.currentGeneration,
-    this.currentBest
+    this.currentBest,
+    null,
+    this.genotypes
   );
 
   next();

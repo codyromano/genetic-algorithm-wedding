@@ -1,15 +1,16 @@
 import React, { Component } from 'react'; // eslint-disable-line
 import { onExperimentReady, createExperiment } from 'experiment/GeneticExperimentFactory';
 import Friend from 'components/Friend';
+import DinnerTable from 'components/immutable/DinnerTable';
 import styles from 'components/mutable/ExperimentPage/experimentPage.css';
 import ExperimentStatus from 'components/immutable/ExperimentStatus';
 import { debouncer } from 'utils';
+import config from 'experiment/config';
 
 export default class ExperimentPage extends Component {
   constructor() {
     super();
     this.state = {
-      friends: [],
       status: '',
       bestGenotype: null,
       generation: 0
@@ -20,7 +21,6 @@ export default class ExperimentPage extends Component {
       generation,
       bestGenotype
     };
-
     if (status) {
       newState.status = status;
     }
@@ -28,10 +28,12 @@ export default class ExperimentPage extends Component {
   }
   componentDidMount() {
     // Limit frequency of setState calls
+    /*
     const onUpdate = debouncer(
       this.experimentDidUpdate.bind(this),
-      2000
+      1
     );
+    */
 
     onExperimentReady(friends => {
       this.setState({
@@ -39,19 +41,48 @@ export default class ExperimentPage extends Component {
         status: 'Population initialized'
       });
 
-      this.experiment = createExperiment({onUpdate});
+      this.experiment = createExperiment({
+        onUpdate: this.experimentDidUpdate.bind(this)
+      });
       this.experiment.start();
     });
   }
-  render() {
-    const { status, generation } = this.state;
-    const friends = this.state.friends.map((friendData, i) => (
-      <Friend {...friendData} key={i}/>
+
+  getFriendsInGenotypeByTable(genotype) {
+    const tableData = [];
+    let currentTable = [];
+
+    genotype.entity.map((friendData, i) => {
+      const friend = (<Friend {...friendData} key={i}/>);
+
+      currentTable.push(friend);
+
+      if (currentTable.length >= config.guestsPerTable) {
+        tableData.push(currentTable);
+        currentTable = [];
+      }
+    });
+
+    return tableData.map((guests, i) => (
+      <DinnerTable friends={guests} key={i}/>
     ));
+  }
+
+  render() {
+    const { status, generation, bestGenotype } = this.state;
+
+    const tables = bestGenotype &&
+      this.getFriendsInGenotypeByTable(bestGenotype);
+
 
     return (
       <div>
-        <ExperimentStatus generation={generation} text={status}/>
+        <ExperimentStatus
+          generation={generation}
+          fitness={bestGenotype && bestGenotype.fitness}
+          text={status}
+        />
+        {tables}
       </div>
     );
   }

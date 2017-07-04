@@ -1,0 +1,14 @@
+.table {
+  display: inline-flex;
+  position: relative;
+  height: 10rem;
+  width: 10rem;
+  padding: 2.5rem;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.friendsWrapper {
+  width: 15rem;
+  margin: 0 auto;
+}

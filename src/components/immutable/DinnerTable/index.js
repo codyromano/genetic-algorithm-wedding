@@ -6,10 +6,16 @@ import dinnerImage from 'images/dinnerTable.png';
 const DinnerTable = ({
   friends
 }) => {
-  // TODO: Add friends around table
+
+  const inlineStyle = {
+    backgroundImage: `url(${dinnerImage})`
+  };
+
   return (
-    <div className={styles.table}>
-      <img src={dinnerImage}/>
+    <div className={styles.table} style={inlineStyle}>
+      <div className={styles.friendsWrapper}>
+        {friends}
+      </div>
     </div>
   );
 };

@@ -4,18 +4,21 @@ import styles from 'components/immutable/ExperimentStatus/experimentStatus.css';
 
 const ExperimentStatus = ({
   text,
-  generation
+  generation,
+  fitness
 }) => {
   return (
     <div className={styles.wrapper}>
-      Generation {generation}: {text}
+      <p>Generation {generation}: {text}</p>
+      <p>Personality variance: {fitness}</p>
     </div>
   );
 };
 
 ExperimentStatus.propTypes = {
   text: PropTypes.string.isRequired,
-  generation: PropTypes.number.isRequired
+  generation: PropTypes.number.isRequired,
+  fitness: PropTypes.number.isRequired
 };
 
 export default ExperimentStatus;

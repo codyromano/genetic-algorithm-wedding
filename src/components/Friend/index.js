@@ -52,5 +52,6 @@ Friend.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
-  features: PropTypes.object.isRequired
+  features: PropTypes.object.isRequired,
+  fadeEffect: PropTypes.string
 };

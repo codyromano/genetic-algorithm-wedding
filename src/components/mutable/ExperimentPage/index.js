@@ -2,17 +2,22 @@ import React, { Component } from 'react'; // eslint-disable-line
 import { onExperimentReady } from 'experiment/GeneticExperimentFactory';
 import Friend from 'components/Friend';
 import styles from 'components/mutable/ExperimentPage/experimentPage.css';
+import ExperimentStatus from 'components/immutable/ExperimentStatus';
 
 export default class ExperimentPage extends Component {
   constructor() {
     super();
     this.state = {
-      friends: []
+      friends: [],
+      status: ''
     };
   }
   componentDidMount() {
     onExperimentReady(friends => {
-      this.setState({friends});
+      this.setState({
+        friends,
+        status: 'Population initialized'
+      });
     });
   }
   render() {
@@ -22,7 +27,7 @@ export default class ExperimentPage extends Component {
 
     return (
       <div>
-        Experiment
+        <ExperimentStatus text={this.state.status}/>
       </div>
     );
   }

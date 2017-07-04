@@ -1,4 +1,5 @@
 import GeneticExperiment from 'experiment/GeneticExperiment';
+import getMockPopulation from 'experiment/helpers/getMockPopulation';
 import config from 'experiment/config';
 
 import seed from 'genetic-operators/seed';
@@ -9,7 +10,18 @@ import selection from 'genetic-operators/selection';
 import extinction from 'genetic-operators/extinction';
 import survival from 'genetic-operators/survival';
 
+let initialPopulation = null;
+
+export async function onExperimentReady(callback) {
+  const mockData = await getMockPopulation(config.populationSize);
+  initialPopulation = mockData;
+
+  callback(mockData);
+}
+
 const getDefaultOptions = () => {
+  const { maxGenerations, guestListSize } = config;
+
   return {
     seed,
     fitness,
@@ -18,13 +30,13 @@ const getDefaultOptions = () => {
     selection,
     extinction,
     survival,
-    initialPopulation: null,
-    maxGenerations: config.maxGenerations,
-    maxGenotypes: config.guestListSize
+    initialPopulation,
+    maxGenerations,
+    maxGenotypes: guestListSize
   };
 };
 
-export default function(options = {}) {
+export function createExperiment(options = {}) {
   // Allow the caller to override default operators
   const constructArgs = Object.assign(
     getDefaultOptions(),

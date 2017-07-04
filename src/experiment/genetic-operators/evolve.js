@@ -1,7 +1,7 @@
 /**
 * @this GeneticExperiment
 */
-export default function() {
+export default function(next) {
   // Find most fit pair
   const [ mother, father ] = this.selection(this.genotypes);
 
@@ -50,4 +50,6 @@ export default function() {
     this.currentGeneration,
     this.currentBest
   );
+
+  next();
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'; // eslint-disable-line
 import { onExperimentReady } from 'experiment/GeneticExperimentFactory';
 import Friend from 'components/Friend';
+import Button from 'components/immutable/Button';
+import styles from 'components/mutable/LandingPage/landingPage.css';
 
 export default class LandingPage extends Component {
   constructor() {
@@ -19,8 +21,17 @@ export default class LandingPage extends Component {
       <Friend {...friendData} key={i}/>
     ));
 
+    const inlineButton = {
+      width: '20rem'
+    };
+
     return (
-      <div>{friends}</div>
+      <div>
+        <div className={styles.overlay}>
+          <Button text="Start Genetic Experiment" style={inlineButton} href="/asdf"/>
+        </div>
+        <div className={styles.mosaic}>{friends}</div>
+      </div>
     );
   }
 }

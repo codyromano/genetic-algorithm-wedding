@@ -1,0 +1,17 @@
+.button {
+  text-decoration: none;
+  background: rgb(243, 125, 34);
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-family: Avenir;
+  color: #fff;
+
+  cursor: pointer;
+  z-index: 4;
+  opacity: 0.75;
+  display: inline-block;
+}
+
+.button {
+  opacity: 1;
+}

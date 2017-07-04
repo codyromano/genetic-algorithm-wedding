@@ -1,0 +1,51 @@
+/* Position button in center screen. */
+.overlay {
+  position: fixed;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  /* Half of button width...This is a bit of a hack.
+  I can't use a flex container for positioning because
+  it interferes with pointer events. */
+  margin-left: -9rem;
+  margin-top: -2rem;
+  text-align: center;
+  z-index: 5;
+
+  opacity: 0;
+  animation: fadeIn ease 8s;
+  animation-fill-mode: forwards;
+  box-shadow: 6px 4px 20px 20px rgba(0, 0, 0, 0.20);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.20);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 6px 4px 20px 20px rgba(0, 0, 0, 0.20);
+  }
+}
+
+.mosaic {
+  display: flex;
+  width: 98vw;
+  height: 100vh;
+  overflow: hidden;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mosaic > * {
+  margin: 0.25rem;
+}

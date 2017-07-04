@@ -4,7 +4,7 @@ const config = {
   // Our total number of Facebook friends
   populationSize: 500,
   // Max iterations for the algorithm
-  maxGenerations: 1000,
+  maxGenerations: 10000,
   // Number of people who can fit in the wedding
   guestListSize: 80,
   guestsPerTable: 10,
@@ -18,7 +18,7 @@ const config = {
   // Percent chance (0-1) that mutation will occur
   mutationChance: 0.05,
   // Percentage of genes swapped during mutation
-  mutationPercent: 0.20
+  mutationPercent: 0.50
 };
 
 export default deepFreeze(config);

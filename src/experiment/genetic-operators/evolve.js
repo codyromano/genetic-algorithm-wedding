@@ -2,24 +2,48 @@
 * @this GeneticExperiment
 */
 export default function() {
-  // Recalculate fitness
-  this.genotypes.forEach(genotype => {
-    genotype.fitness = this.fitness(genotype.entity);
-  });
-
   // Find most fit pair
   const [ mother, father ] = this.selection(this.genotypes);
 
   // Remove least fit from population
   this.extinction(this.genotypes);
 
+  // TODO: Use random
+  const shouldMutate = true;
+
   // Add offsprint of most fit
   const [ daughter, son ] = this.crossover(mother, father);
+  if (shouldMutate) {
+    [daughter, son].forEach(genotype => this.mutate(genotype));
+  }
 
-  this.addGenotype(daughter);
-  this.addGenotype(son);
+  // TODO: Use a Genotypes class
+  this.genotypes.push(daughter);
+  this.genotypes.push(son);
 
-  this.currentBest = this.getMostFit(mother, father, daughter, son);
+  const eliteGroup = [mother, father, daughter, son];
+  eliteGroup.forEach(member => {
+    if (this.currentBest && member.fitness < this.currentBest.fitness) {
+      this.currentBest = member;
+
+      this.onUpdate(
+        this.currentGeneration,
+        this.currentBest,
+        'Found new best seating arrangement!'
+      );
+    }
+    // We're done...the fitness can't get any better!
+    if (this.optimal(member)) {
+      this.onUpdate(
+        this.currentGeneration,
+        this.currentBest,
+        'Optimal seating arrangement discovered!'
+      );
+      console.log(this.currentBest);
+      this.pause();
+    }
+  });
+
   this.currentGeneration+= 1;
 
   this.onUpdate(

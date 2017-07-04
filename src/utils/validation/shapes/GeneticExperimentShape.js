@@ -7,5 +7,6 @@ export default {
   seed: 'function',
   fitness: 'function',
   selection: 'function',
+  survival: 'function',
   onUpdate: 'function'
 };

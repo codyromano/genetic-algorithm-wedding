@@ -23,5 +23,10 @@ export default function(genotype) {
     }
   });
 
-  return totalFitness;
+  // TODO: Refactor
+  if (totalFitness.toString().includes('e')) {
+    totalFitness = 0;
+  }
+
+  return Math.max(0, totalFitness);
 }

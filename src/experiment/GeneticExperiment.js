@@ -1,6 +1,7 @@
 import validate from 'validation/ValidatorFactory';
 import GeneticShape from 'validation/shapes/GeneticExperimentShape';
 import evolve from 'genetic-operators/evolve';
+import optimal from 'genetic-operators/optimal';
 
 /**
 * @private
@@ -8,10 +9,13 @@ import evolve from 'genetic-operators/evolve';
 */
 function evolutionCycle() {
   const { currentGeneration, maxGenerations, evolving } = this;
+  const isPaused = evolving === false;
+  const shouldEvolve = currentGeneration < maxGenerations;
 
-  if (evolving && currentGeneration < maxGenerations) {
+  if (shouldEvolve && !isPaused) {
     evolve.call(this);
-    setTimeout(() => evolutionCycle.call(this), 0);
+    //window.requestIdleCallback(() => evolve.bind(this));
+    window.setTimeout(evolutionCycle.bind(this), 0);
   } else {
     this.evolving = false;
   }
@@ -24,7 +28,12 @@ export default class GeneticExperiment {
 
     // Validate config options
     validate().shapeOf(this, GeneticShape);
+
+    // You have the option of configuring these operators. By default,
+    // in the wedding exmaple, optimal fitness is defined as 0:
+    // no variance among guest preferences
     this.evolve = evolve.bind(this);
+    this.optimal = optimal.bind(this);
 
     this.evolving = false;
     this.currentGeneration = 1;
@@ -39,30 +48,37 @@ export default class GeneticExperiment {
         this.seed()
       );
     }
+    this.calculateInitialFitness();
+    this.onUpdate(
+      this.currentGeneration,
+      this.getBest(),
+      `Initialized population with ${this.genotypes.length} genotypes`
+    );
+  }
+
+  calculateInitialFitness() {
+    // Recalculate fitness
+    this.genotypes.forEach(genotype => {
+      genotype.fitness = this.fitness(genotype);
+
+      // TODO: Refactor
+      if (!this.currentBest || this.currentBest.fitness > genotype.fitness) {
+        this.currentBest = genotype;
+      }
+    });
   }
 
   addGenotype(entity) {
-    const fitness = this.fitness(entity);
-    return this.genotypes.push({
+    const genotype = {
       entity,
-      fitness
-    });
+      fitness: 0
+    };
+    genotype.fitness = this.fitness(genotype);
+    return this.genotypes.push(genotype);
   }
 
   getBest() {
     return this.currentBest;
-  }
-
-  getMostFit(...genotypes) {
-    let mostFit = arguments[0];
-
-    genotypes.forEach(genotype => {
-      if (genotype.fitness > mostFit.fitness) {
-        mostFit = genotype;
-      }
-    });
-
-    return mostFit;
   }
 
   start() {

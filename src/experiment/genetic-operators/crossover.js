@@ -1,4 +1,5 @@
 import { rand } from 'utils';
+import fitness from 'genetic-operators/fitness';
 
 const getTail = (index, array) => array.slice(0, index);
 const getHead = (index, array) => array.slice(index);
@@ -30,9 +31,24 @@ export default function(mother, father) {
     getHead.bind(null, crossoverPoint)
   );
 
+  // TODO: A new class, Genotype, should be created to handle
+  // the cration of the {entity, fitness} shape below.
+
   // Swap parents' heads and tails, respectively, to get offspring
-  const son = fatherTail.concat(motherHead);
-  const daughter = motherTail.concat(fatherHead);
+  const sonEntity = fatherTail.concat(motherHead);
+  const daughterEntity = motherTail.concat(fatherHead);
+
+  const son = {
+    entity: sonEntity,
+    fitness: 0
+  };
+  son.fitness = fitness(son);
+
+  const daughter = {
+    entity: daughterEntity,
+    fitness: 0
+  };
+  daughter.fitness = fitness(daughter);
 
   return [son, daughter];
 }

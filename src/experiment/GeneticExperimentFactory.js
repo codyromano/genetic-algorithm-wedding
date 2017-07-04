@@ -7,6 +7,7 @@ import crossover from 'genetic-operators/crossover';
 import mutate from 'genetic-operators/mutate';
 import selection from 'genetic-operators/selection';
 import extinction from 'genetic-operators/extinction';
+import survival from 'genetic-operators/survival';
 
 const getDefaultOptions = () => {
   return {
@@ -16,6 +17,7 @@ const getDefaultOptions = () => {
     mutate,
     selection,
     extinction,
+    survival,
     maxGenerations: config.maxGenerations,
     maxGenotypes: config.guestListSize
   };

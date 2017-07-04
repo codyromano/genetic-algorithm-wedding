@@ -2,9 +2,7 @@ import React, {Component} from 'react'; //eslint-disable-line
 import createExperiment from 'experiment/GeneticExperimentFactory';
 import { getFriends } from 'stores/friendStore';
 
-getFriends(200).then(friends => {
-  console.log(friends);
-}, err => console.error(err));
+import Friend from 'components/Friend'; //eslint-disable-line
 
 //import fitness from 'genetic-operators/fitness';
 //import survival from 'genetic-operators/survival';
@@ -34,33 +32,47 @@ const experiment = createExperiment({
 experiment.start();
 */
 
+// TODO: Move to utils
+const selfBindMethods = (context, ...methodNames) => {
+  methodNames.forEach(name => {
+    context[name] = context[name].bind(context);
+  });
+};
+
 export default class App extends Component {
   constructor() {
     super();
 
-    /*
     this.state = {
-      experiment: {}
+      friends: []
     };
-    this.experimentUpdated = this.experimentUpdated.bind(this); 
-    */
+
+    selfBindMethods(this, 'onFriendDataResponse', 'onFriendDataError');
   }
   experimentUpdated() {
     //console.log(...args);
   }
+  onFriendDataResponse(friends) {
+    this.setState({friends});
+  }
+  onFriendDataError(errorMsg) {
+    console.error(`There's a network error, and I hope this isn't happening
+      during a live demo...${errorMsg}`);
+  }
+
   componentDidMount() {
-    /*
-    this.setState({
-      experiment: createExperiment(
-        this.experimentUpdated
-      )
-    });
-    startExperiment(this.state.experiment);
-    */
+    getFriends(500).then(
+      this.onFriendDataResponse,
+      this.onFriendDataError
+    );
   }
   render() {
+    const friends = this.state.friends.map(friendData => (
+      <Friend {...friendData}/>
+    ));
+
     return (
-      <main>App</main>
+      <main>{friends}</main>
     );
   }
 }

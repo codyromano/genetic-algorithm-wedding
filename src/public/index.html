@@ -5,44 +5,6 @@
 </head>
 <body>
 
-<script>
-var request = new XMLHttpRequest();
-request.open('GET', 'https://randomuser.me/api/?results=500', true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    // Success!
-    var data = JSON.parse(request.responseText);
-    console.log(data);
-  } else {
-    // We reached our target server, but it returned an error
-  }
-};
-
-request.onerror = function() {
-  // There was a connection error of some sort
-};
-
-request.send();
-</script>
-
-<a id="fb_login_button" href="#" 
-      onclick="FB.login(function(){ console.log(arguments); },
-      {scope: 'friend_list'});
-       return false;">
-    Facebook
-</a>
-
-<fb:login-button 
-  scope="user_friends,public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
-
-<fb:login-button
-    scope="email">
-    Connect Facebooks
-</fb:login-button>
-
 <div id="react-root"></div>
 <script src="./generated/bundle.js"></script>
 

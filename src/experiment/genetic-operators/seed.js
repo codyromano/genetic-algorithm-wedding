@@ -1,10 +1,7 @@
 import config from 'experiment/config';
-import getMockPopulation from 'experiment/helpers/getMockPopulation';
 import { randFromArray } from 'utils';
 
-const population = getMockPopulation();
-
-export default function() {
+export default function(population) {
   const { guestListSize } = config;
 
   // In this case, genotype represents guests invited to wedding,

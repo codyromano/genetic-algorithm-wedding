@@ -1,12 +1,19 @@
-import getMockIndividual from 'experiment/helpers/getMockIndividual';
+import getRandomFitnessFeatures from 'experiment/helpers/getRandomFitnessFeatures';
+import { rand, getID } from 'utils';
+import { getFriends } from 'stores/friendStore';
 import config from 'experiment/config';
 
-export default function() {
-  const population = [];
+// getFriends() returns an object with name and image. To make
+// this a genotype, we need to add a unique id and personality features.
+const assignMetadata = friend => {
+  return Object.assign(friend, {
+    id: getID(),
+    features: getRandomFitnessFeatures()
+  });
+};
 
-  for (let i=0; i<config.populationSize; i++) {
-    population.push( getMockIndividual() );
-  }
 
-  return population;
+export default function(size) {
+  return getFriends(size)
+    .then(friends => friends.map(assignMetadata));
 };

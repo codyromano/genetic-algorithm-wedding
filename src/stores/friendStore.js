@@ -1,3 +1,8 @@
+/**
+* @desc This store retrieves mock name and picture data from
+* an API. The experiment/helper/getMockPopulation module uses
+* this data to produce a mock population formatted for the experiment.
+*/
 const formatResult = result => {
   return {
     firstName: result.name.first,

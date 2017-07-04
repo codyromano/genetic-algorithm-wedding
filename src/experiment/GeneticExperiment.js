@@ -44,8 +44,9 @@ export default class GeneticExperiment {
     this.genotypes = [];
 
     for (let i=0; i<this.maxGenotypes; i++) {
+      // Initial population may be undefined depending on the experiment
       this.addGenotype(
-        this.seed()
+        this.seed(this.initialPopulation)
       );
     }
     this.calculateInitialFitness();

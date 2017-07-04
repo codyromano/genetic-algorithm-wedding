@@ -1,36 +1,40 @@
 import React, {Component} from 'react'; //eslint-disable-line
-import createExperiment from 'experiment/GeneticExperimentFactory';
-import { getFriends } from 'stores/friendStore';
 
+import createExperiment from 'experiment/GeneticExperimentFactory';
+import getMockPopulation from 'experiment/helpers/getMockPopulation';
+import config from 'experiment/config';
+
+import { getFriends } from 'stores/friendStore';
 import Friend from 'components/Friend'; //eslint-disable-line
 
-//import fitness from 'genetic-operators/fitness';
-//import survival from 'genetic-operators/survival';
-//import getMockIndividual from 'experiment/helpers/getMockIndividual';
-
-/*
 let previousBest = {
-  entity: null,
-  fitness: window.Infinity
+  fitness: window.Infinity,
+  entity: null
 };
-const experiment = createExperiment({
-  onUpdate: function(generation, best, message) {
 
-    if (best.fitness < previousBest.fitness) {
-      previousBest = best;
-      console.log(`%cNew winner! Score: ${best.fitness}`, 'color: green');
+getMockPopulation(config.populationSize).then(initialPopulation => {
+  const experiment = createExperiment({
+    initialPopulation,
+    onUpdate: function(generation, best, message) {
+
+      if (best.fitness < previousBest.fitness) {
+        previousBest = best;
+        console.log(`%cNew winner! Score: ${best.fitness}`, 'color: green');
+      }
+      if (message && message.toLowerCase().includes('optimal')) {
+        console.log(`%c${message}`, 'font-size:15px;color:blue');
+      }
+      if (generation % 100 === 0) {
+        console.log(`%cSimulation #${generation}`, 'color: #555');
+      }
     }
-    if (message && message.toLowerCase().includes('optimal')) {
-      console.log(`%c${message}`, 'font-size:15px;color:blue');
-    }
-    if (generation % 100 === 0) {
-      console.log(`%cSimulation #${generation}`, 'color: #555');
-    }
-  }
+  });
+
+  console.log(experiment);
+
+  experiment.start();
 });
 
-experiment.start();
-*/
 
 // TODO: Move to utils
 const selfBindMethods = (context, ...methodNames) => {
@@ -67,8 +71,8 @@ export default class App extends Component {
     );
   }
   render() {
-    const friends = this.state.friends.map(friendData => (
-      <Friend {...friendData}/>
+    const friends = this.state.friends.map((friendData, i) => (
+      <Friend {...friendData} key={i}/>
     ));
 
     return (

@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from 'react'; //eslint-disable-line
+import React, { Component } from 'react'; //eslint-disable-line
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styles from 'components/Friend/friend.css';
 import { rand } from 'utils';

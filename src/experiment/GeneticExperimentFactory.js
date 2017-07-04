@@ -18,6 +18,7 @@ const getDefaultOptions = () => {
     selection,
     extinction,
     survival,
+    initialPopulation: null,
     maxGenerations: config.maxGenerations,
     maxGenotypes: config.guestListSize
   };

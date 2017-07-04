@@ -22,7 +22,7 @@ export default class ExperimentPage extends Component {
 
     return (
       <div>
-        <div className={styles.mosaic}>{friends}</div>
+        Experiment
       </div>
     );
   }

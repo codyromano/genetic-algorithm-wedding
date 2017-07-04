@@ -28,7 +28,7 @@ export default class LandingPage extends Component {
     return (
       <div>
         <div className={styles.overlay}>
-          <Button text="Start Genetic Experiment" style={inlineButton} href="/asdf"/>
+          <Button text="Start Genetic Experiment" style={inlineButton} href="/experiment"/>
         </div>
         <div className={styles.mosaic}>{friends}</div>
       </div>

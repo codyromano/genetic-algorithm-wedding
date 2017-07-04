@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import styles from 'components/immutable/Button/button.css';
+import { Link } from 'react-router-dom';
 
 const Button = ({
   text,
@@ -9,7 +10,9 @@ const Button = ({
 }) => {
   // TODO: Add friends around table
   return (
-    <a href={href} style={style} className={styles.button}>{text}</a>
+    <Link to={href} style={style} className={styles.button}>
+      {text}
+    </Link>
   );
 };
 

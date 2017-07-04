@@ -2,6 +2,7 @@ import React, { Component } from 'react'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styles from 'components/Friend/friend.css';
+import FeatureSet from 'components/FeatureSet';
 import { rand } from 'utils';
 
 export default class Friend extends Component {
@@ -31,7 +32,7 @@ export default class Friend extends Component {
     preloadImg.src = this.props.imageSrc;
   }
   render() {
-    const { firstName, lastName, imageSrc } = this.props;
+    const { firstName, imageSrc, features} = this.props;
 
     const style = {};
     if (this.state.imagePreloaded) {
@@ -40,7 +41,8 @@ export default class Friend extends Component {
 
     return (
       <div style={style} className={styles.friend} ref="friendEl">
-        <div className={styles.friendName}>{firstName} {lastName}</div>
+        <div className={styles.friendName}>{firstName}</div>
+        {this.state.showStats && <FeatureSet features={features}/>}
       </div>
     );
   }
@@ -49,5 +51,6 @@ export default class Friend extends Component {
 Friend.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired
+  imageSrc: PropTypes.string.isRequired,
+  features: PropTypes.object.isRequired
 };

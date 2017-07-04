@@ -1,0 +1,9 @@
+.featureSet {
+  background-color: #fff;
+  border: solid #000;
+  position: absolute;
+}
+
+.label {
+  font-size: 1.5rem;
+}

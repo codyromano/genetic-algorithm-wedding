@@ -1,7 +1,6 @@
 import getRandomFitnessFeatures from 'experiment/helpers/getRandomFitnessFeatures';
-import { rand, getID } from 'utils';
+import { getID } from 'utils';
 import { getFriends } from 'stores/friendStore';
-import config from 'experiment/config';
 
 // getFriends() returns an object with name and image. To make
 // this a genotype, we need to add a unique id and personality features.
@@ -16,4 +15,4 @@ const assignMetadata = friend => {
 export default function(size) {
   return getFriends(size)
     .then(friends => friends.map(assignMetadata));
-};
+}

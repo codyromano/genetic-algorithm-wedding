@@ -35,6 +35,10 @@ module.exports = {
         query: {
           presets: ['react', 'es2017']
         }
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader'
       }
     ]
   }

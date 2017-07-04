@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; //eslint-disable-line
 import { onExperimentReady, createExperiment } from 'experiment/GeneticExperimentFactory';
 import Friend from 'components/Friend'; //eslint-disable-line
+import DinnerTable from 'components/immutable/DinnerTable';
 
 // TODO: Move to utils
 const selfBindMethods = (context, ...methodNames) => {
@@ -48,7 +49,10 @@ export default class App extends Component {
     ));
 
     return (
-      <main>{friends}</main>
+      <main>
+        {friends}
+        <DinnerTable friends={[]}/>
+      </main>
     );
   }
 }

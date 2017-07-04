@@ -7,6 +7,7 @@ module.exports = {
   'validation': path.resolve(__dirname, 'src/utils/validation'),
   'components': path.resolve(__dirname, 'src/components'),
   'experiment': path.resolve(__dirname, 'src/experiment'),
+  'images': path.resolve(__dirname, 'src/public/images'),
   'genetic-operators': path.resolve(__dirname, 'src/experiment/genetic-operators'),
   'public': path.resolve(__dirname, 'src/public')
 };

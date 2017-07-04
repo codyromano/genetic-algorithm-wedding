@@ -2,7 +2,7 @@ import React, { Component } from 'react'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import styles from 'components/Friend/friend.css';
-import FeatureSet from 'components/FeatureSet';
+import FeatureSet from 'components/FeatureSet'; //eslint-disable-line
 import { rand } from 'utils';
 
 export default class Friend extends Component {

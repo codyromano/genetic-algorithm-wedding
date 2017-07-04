@@ -7,13 +7,5 @@ app.use(express.static(
   path.join(__dirname, 'src/public/')
 ));
 
-/*
-app.get('*', function(req, res) {
-  const file = path.join(__dirname, 'public/index.html');
-  res.sendFile(file);
-  res.end();
-});
-*/
-
 app.listen(port);
 console.log(`Listening on ${port}`);

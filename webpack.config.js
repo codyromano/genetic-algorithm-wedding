@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/bootstrap.js',
   output: {
     path: path.resolve(__dirname, 'src/public/generated'),
-    publicPath: "/src/public/",
+    publicPath: '/src/public/',
     filename: 'bundle.js'
   },
   resolve: {
@@ -14,12 +14,26 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: 'genetic_[local]_[hash:base64:5]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['react', 'es2017']
         }
       }
     ]

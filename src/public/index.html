@@ -6,38 +6,24 @@
 <body>
 
 <script>
-  function onFBConnect(response) {
-    FB.api(
-      `/${response.userID}/friendlists`,
-      function (response) {
-        console.log(response);
-        if (response && !response.error) {
-        }
-      }
-    );
+var request = new XMLHttpRequest();
+request.open('GET', 'https://randomuser.me/api/?results=500', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var data = JSON.parse(request.responseText);
+    console.log(data);
+  } else {
+    // We reached our target server, but it returned an error
   }
+};
 
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '440209749685092',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();   
+request.onerror = function() {
+  // There was a connection error of some sort
+};
 
-    FB.getLoginStatus(function(response) {
-      onFBConnect(response.authResponse);
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+request.send();
 </script>
 
 <a id="fb_login_button" href="#" 
@@ -48,7 +34,7 @@
 </a>
 
 <fb:login-button 
-  scope="public_profile,email"
+  scope="user_friends,public_profile,email"
   onlogin="checkLoginState();">
 </fb:login-button>
 

@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   'test': path.resolve(__dirname, 'test'),
+  'stores': path.resolve(__dirname, 'src/stores'),
   'utils': path.resolve(__dirname, 'src/utils'),
   'validation': path.resolve(__dirname, 'src/utils/validation'),
   'components': path.resolve(__dirname, 'src/components'),

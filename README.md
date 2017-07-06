@@ -2,7 +2,13 @@
 
 Have you ever attended a wedding, dinner party or other large event where you didn't have a lot in common with other guests? Given a list of friends, this algorithm figures out whom should be invited to an event — and where they should sit — so that everyone gets along. It takes into account the guests' sense of humor and political affiliations.
 
+Take a list of all your friends:
+
 ![](https://media.giphy.com/media/l0IynVv35qWZH5jOM/giphy.gif)
+
+Run the experiment to group them based on political preferences and sense of humor:
+
+![](https://media.giphy.com/media/xUA7aUzVdHkSMezrdC/giphy.gif)
 
 # Try it
 ```

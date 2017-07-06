@@ -1,5 +1,6 @@
 # Genetic Algorithm Wedding
-Algorithm that determines who should be invited to a wedding (or similar large event) to maximize how well everyone gets along
+
+Have you ever attended a wedding, dinner party or other large event where you didn't have a lot in common with other guests? Given a list of friends, this algorithm figures out whom should be invited to an event — and where they should sit — so that everyone gets along. It takes into account the guests' sense of humor and political affiliations.
 
 ![](https://media.giphy.com/media/l0IynVv35qWZH5jOM/giphy.gif)
 
@@ -18,6 +19,3 @@ Open `http://localhost:9999` in your browser
 2. Produces many random combinations
 3. Judges the combinations using "happiness criteria" you provide
 4. Optimizes for overall guest happiness
-
-## Background
-I'm building this app to use as an example in a talk on genetic algorithms later this year.

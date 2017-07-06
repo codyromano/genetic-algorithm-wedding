@@ -1,5 +1,6 @@
 # Genetic Algorithm Wedding
-Optimize the seating arrangement for a wedding (or other large party) — and decide whom to invite — using a genetic algorithm.
+Algorithm that determines who should be invited to a wedding (or similar large event) to maximize how well everyone gets along
+
 ![](https://media.giphy.com/media/l0IynVv35qWZH5jOM/giphy.gif)
 
 # Try it

@@ -1,9 +1,26 @@
 .featureSet {
-  background-color: #fff;
-  border: solid #000;
   position: absolute;
+  top: 3rem;
+
+  z-index: 7;
+  display: inline-block;
+  width: 10rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-weight: bold;
+  font-family: Helvetica;
+  font-size: 1.25rem;
+  pointer-events: none;
+}
+
+.featureSet:hover {
+  opacity: 1;
 }
 
 .label {
-  font-size: 1.5rem;
+  font-size: 0.75rem;
+  padding: 0.25rem;
 }

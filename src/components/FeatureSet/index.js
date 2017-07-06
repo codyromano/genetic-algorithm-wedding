@@ -4,13 +4,14 @@ import styles from 'components/FeatureSet/featureSet.css';
 import getFeatureDescriptor from 'experiment/helpers/getFeatureDescriptor';
 
 const FeatureSet = ({
+  firstName,
   features
 }) => {
 
   const rows = [];
   for (const [feature, value] of Object.entries(features)) {
     const item = (
-      <div className={styles.label}>
+      <div className={styles.label} key={feature}>
         {getFeatureDescriptor(feature, value)}
       </div>
     );
@@ -19,12 +20,14 @@ const FeatureSet = ({
 
   return (
     <div className={styles.featureSet}>
+      <strong>{firstName}</strong>
       {rows}
     </div>
   );
 };
 
 FeatureSet.propTypes = {
+  firstName: PropTypes.string.isRequired,
   features: PropTypes.object.isRequired
 };
 

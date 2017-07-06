@@ -2,9 +2,8 @@ import React, { Component } from 'react'; // eslint-disable-line
 import { onExperimentReady, createExperiment } from 'experiment/GeneticExperimentFactory';
 import Friend from 'components/Friend';
 import DinnerTable from 'components/immutable/DinnerTable';
-import styles from 'components/mutable/ExperimentPage/experimentPage.css';
+import styles from 'components/mutable/ExperimentPage/experimentPage.css'; // eslint-disable-line
 import ExperimentStatus from 'components/immutable/ExperimentStatus';
-import { debouncer } from 'utils';
 import config from 'experiment/config';
 
 export default class ExperimentPage extends Component {
@@ -13,8 +12,10 @@ export default class ExperimentPage extends Component {
     this.state = {
       status: '',
       bestGenotype: null,
-      generation: 0
+      generation: 0,
+      selectedGeneId: null
     };
+    this.onGeneClick = this.onGeneClick.bind(this);
   }
   experimentDidUpdate(generation, bestGenotype, status) {
     let newState = {
@@ -27,14 +28,6 @@ export default class ExperimentPage extends Component {
     this.setState(newState);
   }
   componentDidMount() {
-    // Limit frequency of setState calls
-    /*
-    const onUpdate = debouncer(
-      this.experimentDidUpdate.bind(this),
-      1
-    );
-    */
-
     onExperimentReady(friends => {
       this.setState({
         friends,
@@ -48,12 +41,26 @@ export default class ExperimentPage extends Component {
     });
   }
 
+  onGeneClick(id) {
+    this.setState({
+      selectedGeneId: id
+    });
+  }
+
   getFriendsInGenotypeByTable(genotype) {
     const tableData = [];
     let currentTable = [];
 
     genotype.entity.map((friendData, i) => {
-      const friend = (<Friend {...friendData} key={i}/>);
+      const isSelected = this.state.selectedGeneId === friendData.id;
+      const friend = (
+        <Friend
+          {...friendData}
+          key={i}
+          onClick={this.onGeneClick}
+          showFeatureSet={isSelected}
+        />
+      );
 
       currentTable.push(friend);
 
@@ -74,12 +81,11 @@ export default class ExperimentPage extends Component {
     const tables = bestGenotype &&
       this.getFriendsInGenotypeByTable(bestGenotype);
 
-
     return (
-      <div>
+      <div className={styles.experiment}>
         <ExperimentStatus
           generation={generation}
-          fitness={bestGenotype && bestGenotype.fitness}
+          fitness={bestGenotype && bestGenotype.fitness || 0}
           text={status}
         />
         {tables}

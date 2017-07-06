@@ -18,7 +18,7 @@ export default class LandingPage extends Component {
   }
   render() {
     const friends = this.state.friends.map((friendData, i) => (
-      <Friend {...friendData} key={i}/>
+      <Friend {...friendData} fadeEffect={true} key={i}/>
     ));
 
     const inlineButton = {

@@ -1,3 +1,5 @@
+import sassy from 'experiment/helpers/sassy';
+
 /**
 * @this GeneticExperiment
 */
@@ -26,10 +28,13 @@ export default function(next) {
     if (this.currentBest && member.fitness < this.currentBest.fitness) {
       this.currentBest = member;
 
+      const name = this.currentBest.entity[0].firstName;
+
       this.onUpdate(
         this.currentGeneration,
         this.currentBest,
-        'Found new best seating arrangement!'
+        sassy(name)
+        //'Found new best seating arrangement!'
       );
     }
     // We're done...the fitness can't get any better!

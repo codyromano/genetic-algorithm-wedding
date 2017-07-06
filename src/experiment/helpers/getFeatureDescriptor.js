@@ -11,13 +11,13 @@ const descriptors = {
   ],
   sports: [
     // 0.75 - 1 = Extreme conservative
-    [0.75, 'Extremely right-wing'],
+    [0.75, 'Mega sports fan'],
     // 0.60 - 0.75
-    [0.60, 'Right-wing'],
+    [0.60, 'Loves sports'],
     // 0.4 - 0.6
-    [0.40, 'Moderate'],
-    [0.25, 'Left-wing'],
-    [0, 'Extremly left-wing']
+    [0.40, 'Midly athletic'],
+    [0.25, 'Rarely watches sports'],
+    [0, 'Hates athletics']
   ],
   humor: [
     // 0.75 - 1 = Extreme conservative
@@ -35,7 +35,7 @@ export default function(feature, value) {
   const featureData = descriptors[feature];
 
   if (!featureData) {
-    return 'Unknown';
+    return '';
   }
 
   for (const threshold of featureData) {

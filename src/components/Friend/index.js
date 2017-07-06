@@ -11,6 +11,7 @@ export default class Friend extends Component {
     this.state = {
       imagePreloaded: false
     };
+    this.handleGeneSelection = this.handleGeneSelection.bind(this);
   }
 
   onImagePreloaded() {
@@ -31,27 +32,58 @@ export default class Friend extends Component {
     preloadImg.onload = () => this.onImagePreloaded();
     preloadImg.src = this.props.imageSrc;
   }
-  render() {
-    const { firstName, imageSrc, features} = this.props;
 
-    const style = {};
+  handleGeneSelection() {
+    this.props.onClick(this.props.id);
+  }
+
+  render() {
+    const {
+      firstName,
+      imageSrc,
+      features,
+      fadeEffect,
+      showFeatureSet
+    } = this.props;
+
+    const style = Object.assign({}, this.props.style);
     if (this.state.imagePreloaded) {
       style['backgroundImage'] = `url(${imageSrc})`;
     }
+    const classList = [styles.friend];
+    if (fadeEffect) {
+      classList.push(styles.fadeEffect);
+    }
 
     return (
-      <div style={style} className={styles.friend} ref="friendEl">
-        <div className={styles.friendName}>{firstName}</div>
-        {this.state.showStats && <FeatureSet features={features}/>}
+      <div
+        style={style}
+        onMouseEnter={this.handleGeneSelection}
+        className={styles.friend}
+        ref="friendEl">
+        {showFeatureSet && <FeatureSet
+          firstName={firstName}
+          features={features}
+        />}
       </div>
     );
   }
 }
 
+Friend.defaultProps = {
+  style: {},
+  onClick: () => {},
+  showFeatureSet: false
+};
+
 Friend.propTypes = {
+  id: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   features: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  showFeatureSet: PropTypes.bool,
+  style: PropTypes.object,
   fadeEffect: PropTypes.string
 };

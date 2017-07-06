@@ -1,5 +1,5 @@
-# Genetic Wedding
-Optimize your wedding seating arrangement — and decide whom to invite — using a genetic algorithm.
+# Genetic Algorithm Wedding
+Optimize the seating arrangement for a wedding (or other large party) — and decide whom to invite — using a genetic algorithm.
 ![](https://media.giphy.com/media/l0IynVv35qWZH5jOM/giphy.gif)
 
 # Try it

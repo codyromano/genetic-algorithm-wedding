@@ -1,0 +1,41 @@
+.bubble {
+  position: absolute;
+
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+
+  background-color: #fff;
+  border-radius: 50%;
+
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  animation-name: float;
+}
+
+@keyframes float {
+  0% {
+    top: 100%;
+    transform: scale(0.90);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  25% {
+    top: 80%;
+  }
+  85% {
+    opacity: 0.75;
+  }
+  98% {
+    transform: scale(1.05);
+  }
+  99% {
+    transform: scale(1.25);
+  }
+  100% {
+    top: 0%;
+    opacity: 0.5;
+  }
+}

@@ -5,6 +5,7 @@ import DinnerTable from 'components/immutable/DinnerTable';
 import styles from 'components/mutable/ExperimentPage/experimentPage.css'; // eslint-disable-line
 import ExperimentStatus from 'components/immutable/ExperimentStatus';
 import config from 'experiment/config';
+import Beaker from 'components/immutable/Beaker';
 
 export default class ExperimentPage extends Component {
   constructor() {
@@ -81,8 +82,19 @@ export default class ExperimentPage extends Component {
     const tables = bestGenotype &&
       this.getFriendsInGenotypeByTable(bestGenotype);
 
+    const beakerProps = {
+      percentFilled: Math.round((generation / config.maxGenerations) * 100),
+      spawnFrequency: 50,
+      width: 100,
+      height: 100,
+      bubbleOptions: {
+        radius: 10
+      }
+    };
+
     return (
       <div className={styles.experiment}>
+        <Beaker {...beakerProps}/>
         <ExperimentStatus
           generation={generation}
           fitness={bestGenotype && bestGenotype.fitness || 0}

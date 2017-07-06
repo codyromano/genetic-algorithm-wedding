@@ -9,7 +9,7 @@ const ExperimentStatus = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <strong>Exploring possibility #{generation}</strong>
+      <strong>Running experiment #{generation}</strong>
       <p>Total personality variance: {fitness.toPrecision(6)}</p>
       <p className={styles.status}>{text}</p>
     </div>

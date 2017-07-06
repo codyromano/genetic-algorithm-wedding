@@ -4,7 +4,7 @@ import config from 'experiment/config';
 
 import seed from 'genetic-operators/seed';
 import fitness from 'genetic-operators/fitness';
-import crossover from 'genetic-operators/crossover';
+import crossover from 'genetic-operators/crossover-OX1';
 import mutate from 'genetic-operators/mutate';
 import selection from 'genetic-operators/selection';
 import extinction from 'genetic-operators/extinction';

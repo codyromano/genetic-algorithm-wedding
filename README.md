@@ -25,3 +25,7 @@ Open `http://localhost:9999` in your browser
 2. Produces many random combinations
 3. Judges the combinations using "happiness criteria" you provide
 4. Optimizes for overall guest happiness
+
+## How the GA works
+
+![](http://i.imgur.com/ZytwGow.jpg)

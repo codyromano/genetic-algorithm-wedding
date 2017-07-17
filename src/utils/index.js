@@ -10,6 +10,7 @@ import arrayDiffFn from 'utils/array/arrayDiff';
 import UniqueArrayFn from 'utils/array/UniqueArray';
 import convertObjectArrayToHashMapFn from 'utils/array/convertObjectArrayToHashMap';
 import debouncerFn from 'utils/debouncer';
+import capitalizeFn from 'utils/capitalize';
 
 export const rand = randFn;
 export const cloneObjectArray = cloneObjectArrayFn;
@@ -23,3 +24,4 @@ export const arrayDiff = arrayDiffFn;
 export const UniqueArray = UniqueArrayFn;
 export const debouncer = debouncerFn;
 export const convertObjectArrayToHashMap = convertObjectArrayToHashMapFn;
+export const capitalize = capitalizeFn;
